@@ -42,9 +42,7 @@ class Proposal(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     medium = models.OneToOneField(to="Medium", on_delete=models.CASCADE)
     note = models.TextField()
-    proposed_by = models.ForeignKey(
-        to="MafiasiUser", on_delete=models.PROTECT, related_name="proposed_mediums"
-    )
+    proposed_by = models.ForeignKey(to="MafiasiUser", on_delete=models.PROTECT, related_name="proposals")
     votes = models.ManyToManyField(to="MafiasiUser", through="Vote", through_fields=("proposal", "user"))
 
     def __str__(self):

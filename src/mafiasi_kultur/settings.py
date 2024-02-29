@@ -127,6 +127,8 @@ if TRUST_REVERSE_PROXY:
     USE_X_FORWARDED_HOST = True
     USE_X_FORWARDED_PORT = True
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "unsafe-none"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
