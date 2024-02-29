@@ -1,0 +1,48 @@
+name: test
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "*" ]
+
+jobs:
+  check-pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: python -m pip install pre-commit
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit|${{ env.pythonLocation }}|${{ hashFiles('.pre-commit-config.yaml') }}
+      - run: pre-commit run --show-diff-on-failure --color=always --all-files
+
+  test-backend:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: docker.io/postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: mafiasi_kultur
+          POSTGRES_PASSWORD: mafiasi_kultur
+          POSTGRES_DB: mafiasi_kultur
+    steps:
+      - name: install system dependencies
+        run: |
+          pip install pipenv
+          sudo apt install npm
+          npm install -g pnpm
+      - uses: actions/checkout@v4
+      - name: install project dependencies
+        run: pipenv sync --dev
+      - name: manage.py --help
+        run: pipenv run ./src/manage.py --help
+      - name: pytest
+        run: pipenv run pytest

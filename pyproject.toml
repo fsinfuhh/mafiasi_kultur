@@ -1,0 +1,14 @@
+[tool.black]
+line-length = 110
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = "src/mafiasi_kultur/*/tests"
+log_cli = true
+log_cli_level = "info"
+django_find_project = false
+norecursedirs = "dev_db *.egg .* dist node_modules"
+DJANGO_SETTINGS_MODULE = "mafiasi_kultur.settings"

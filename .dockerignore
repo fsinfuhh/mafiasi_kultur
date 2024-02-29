@@ -1,0 +1,16 @@
+.idea
+.vscode
+
+# env files not meant for production
+**/.env.local
+**/.env.dev
+**/.env.dev.local
+
+# Nuxt dev/build outputs
+src/mafiasi_kultur_gui/.output
+src/mafiasi_kultur_gui/.data
+src/mafiasi_kultur_gui/.nuxt
+src/mafiasi_kultur_gui/.nitro
+src/mafiasi_kultur_gui/.cache
+src/mafiasi_kultur_gui/dist
+src/mafiasi_kultur_gui/node_modules

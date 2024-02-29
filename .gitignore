@@ -1,0 +1,12 @@
+# editors
+.idea
+.vscode
+
+# development files
+dev_db
+.env.local
+.env.*.local
+
+# artifacts and caches
+**/__pycache__
+**/django-staticfiles

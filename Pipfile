@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "~=4.1"                                        # web framework
+psycopg = { version = "~=3.0", extras = ["binary"] }    # database driver
+environs = {  extras = ["django"] }                     # configuration via env variables
+simple-openid-connect = {extras = ["djangorestframework", "django"], version = "~=0.5.3" }  # mafiasi-identity auth
+djangorestframework = "~=3.14.0"                        # api framework ontop of django
+drf-spectacular = {  extras = ["sidecar"] }             # openapi schema generation for the api
+django-cors-headers = "~=4.2.0"                         # CORS security header configuration for django
+opentelemetry-api = "~=1.22.0"                          # abstract api for creating telemetry measurements
+opentelemetry-sdk = "~=1.22.0"                          # implementation of telemetry measurement colelction and config
+opentelemetry-exporter-prometheus = "*"                 # translation of telemetry measurements into prometheus exposition format
+
+[dev-packages]
+ipython = "*"
+black = "*"
+isort = "*"
+pytest = "*"
+pytest-django = "*"
+
+[requires]
+python_version = "3"
