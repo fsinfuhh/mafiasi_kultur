@@ -1,14 +1,29 @@
 <script lang="ts" setup>
+import {useAgApi} from "~/composables/api";
+import type {AG} from "~/utils/apiClient";
+
 definePageMeta({
-  name: "index"
+  name: "index",
+  middleware: ["authenticated"],
 })
 useSeoMeta({
   title: "Mafiasi Kulturgenießer"
 })
+
+const agApi = await useAgApi();
+const ags = ref<AG[]>([]);
+
+onMounted(async () => {
+  ags.value = await agApi.agsList();
+});
 </script>
 
 <template>
   <div>
-    <h1 class="text-xl">Congratulations, you've got a Mafiasi App up and running</h1>
+    <ul>
+      <li v-for="ag in ags">
+        <NuxtLink :to="{ name: 'ag_index', params: { id: ag.id } }">{{ ag.name }}</NuxtLink>
+      </li>
+    </ul>
   </div>
 </template>

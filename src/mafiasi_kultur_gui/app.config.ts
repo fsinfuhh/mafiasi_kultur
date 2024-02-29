@@ -1,5 +1,5 @@
 export default defineAppConfig({
     mafiasi: {
-        openidScopes: "openid"
+        openidScopes: "openid profile"
     }
 })

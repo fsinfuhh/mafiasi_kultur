@@ -1,4 +1,4 @@
-import {Configuration} from "~/utils/apiClient";
+import {AgsApi, Configuration, MediumsApi} from "~/utils/apiClient";
 
 async function useApiConfig(): Promise<Configuration> {
     const appConfig = useRuntimeConfig();
@@ -12,11 +12,10 @@ async function useApiConfig(): Promise<Configuration> {
     })
 }
 
-/*
- * Construct api clients like this:
- *
- * import {StuffApi} from "~/utils/apiClient";
- * export async function useStuffApi(): Promise<StuffApi> {
- *  return new StuffApi(await useApiConfig());
- * }
- */
+export async function useAgApi(): Promise<AgsApi> {
+    return new AgsApi(await useApiConfig())
+}
+
+export async function useMediumApi(): Promise<MediumsApi> {
+    return new MediumsApi(await useApiConfig())
+}

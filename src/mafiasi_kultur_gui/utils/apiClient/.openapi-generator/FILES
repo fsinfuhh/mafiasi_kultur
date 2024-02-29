@@ -1,0 +1,12 @@
+.openapi-generator-ignore
+apis/AgsApi.ts
+apis/MediumsApi.ts
+apis/index.ts
+index.ts
+models/AG.ts
+models/CastVoteRequest.ts
+models/MediumViewset.ts
+models/Proposal.ts
+models/Viewing.ts
+models/index.ts
+runtime.ts
