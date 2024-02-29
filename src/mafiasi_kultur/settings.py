@@ -56,7 +56,7 @@ ALLOWED_METRICS_NETS = [
 OPENID_CLIENT_ID = env.str("DJANGO_OPENID_CLIENT_ID")
 OPENID_CLIENT_SECRET = env.str("DJANGO_OPENID_CLIENT_SECRET")
 OPENID_ISSUER = env.str("OPENID_ISSUER", default="https://identity.mafiasi.de/realms/mafiasi")
-OPENID_SCOPE = "openid"
+OPENID_SCOPE = "openid profile"
 OPENID_USER_MAPPER = "mafiasi_kultur.core.oidc_user_mapping.MafiasiUserMapper"
 OPENID_ANY_USER_IS_ADMIN = env.bool("DJANGO_ANY_OPENID_USER_IS_ADMIN", default=False)
 OPENID_SUPERUSER_GROUPS = env.list("DJANGO_OPENID_SUPERUSER_GROUPS", default=[])
